@@ -6,8 +6,8 @@
 set -eu
 
 ##### CHANGE THESE VARIABLES AS NEEDED ######
-IMG=/om2/user/smeisler/qsiprep_0_14_3.img
-module add openmind/singularity/3.6.3
+IMG='' # put path to qsiprep docker image here
+module add openmind/singularity/3.6.3 # add singularity to path
 #############################################
 
 # Import arguments from job submission script
