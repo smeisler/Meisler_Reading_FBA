@@ -6,9 +6,9 @@
 set -eu
 
 ##### CHANGE THESE VARIABLES AS NEEDED ######
-IMG='' # Put singularity image here
+IMG='' # put path to smriprep docker image here
 ses='ses-HBNsiteCBIC'
-module add openmind/singularity/3.6.3 # Add singularity to path
+module add openmind/singularity/3.6.3 # add singularity to path
 #############################################
 
 # Import arguments from job submission script
