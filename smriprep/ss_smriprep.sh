@@ -20,7 +20,6 @@ bids_dir=$1
 # index slurm array to grab subject
 subject=${subjs[${SLURM_ARRAY_TASK_ID}]}
 
-# assign working directory
 # assign output directory
 output_dir=${bids_dir}/derivatives
 
