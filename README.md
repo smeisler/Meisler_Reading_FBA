@@ -13,7 +13,7 @@ If using this code, please also cite relevant papers to the software and methods
 ## Requirements
 ### In general
 - BIDS-compliant dataset with _at least_ T1w and DWI images
-- Singularity / Docker (used to compile and run Docker Images) with the following images:
+- Singularity / Docker with the following Docker images:
   - QSIPrep 0.14.3 (`singularity build qsiprep.simg docker://pennbbl/qsiprep:0.14.3`)
   - TractSeg 2.3 (`singularity build tractseg.simg docker://wasserth/tractseg_container:master`)
   - MrTrix 3.0.3 (`singularity build mrtrix.simg docker://mrtrix3/mrtrix3:3.0.3`)
