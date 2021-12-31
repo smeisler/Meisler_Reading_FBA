@@ -8,6 +8,7 @@ set -eu
 ##### CHANGE THESE VARIABLES AS NEEDED ######
 IMG='' # put path to qsiprep docker image here
 module add openmind/singularity/3.6.3 # add singularity to path
+scratch=/om/scratch/Mon/$(whoami)/qsiprep # assign working directory
 #############################################
 
 # Import arguments from job submission script
@@ -19,7 +20,6 @@ bids_dir=$1
 subject=${subjs[${SLURM_ARRAY_TASK_ID}]}
 
 # assign working directory
-scratch=/om/scratch/Mon/$(whoami)/qsiprep
 mkdir -p $scratch
 
 # assign output directory
