@@ -1,5 +1,5 @@
 # Meisler_Reading_FBA
-Code used in the Meisler and Gabrieli 2022 paper on fixel based analyses relating to reading abilities.
+Code used in the Meisler and Gabrieli 2022 paper on fixel based analyses relating to reading abilities. Please clone these folders to your BIDS code directory (you can delete the LICENSE and README files from there afterwards).
 
 This repository includes the code used to preprocess the neuroimaging data (QSIPrep and sMRIPrep), prepare for fixel-based analyses (FBA, primarily using MRtrix3), and run the FBA (ModelArray). Much of the processing code is agnostic to the data set. That is, it can be run on **any BIDs** compliant dataset with T1w and diffusion data. Other parts of code, such as quality control and phenotypic comparisons, are tailored to work with a Healthy Brain Network (HBN) phenotypic query, but can be adapted to work with another dataset.
 
