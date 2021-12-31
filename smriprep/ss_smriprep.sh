@@ -9,6 +9,7 @@ set -eu
 IMG='' # put path to smriprep docker image here
 ses='ses-HBNsiteCBIC'
 module add openmind/singularity/3.6.3 # add singularity to path
+scratch='' # assign working directory
 #############################################
 
 # Import arguments from job submission script
@@ -20,7 +21,6 @@ bids_dir=$1
 subject=${subjs[${SLURM_ARRAY_TASK_ID}]}
 
 # assign working directory
-scratch=/om/scratch/Mon/$(whoami)/smriprep
 # assign output directory
 output_dir=${bids_dir}/derivatives
 
