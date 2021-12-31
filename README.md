@@ -44,19 +44,19 @@ If using this code, please also cite relevant papers to the software and methods
 - Run through Jupyter notebooks 1-3. Read the comments in the notebook for notes and directions.
 
 ## 3) Begin Fixel Based Analysis Pipeline (up until manual QC is required again)
-- Update fields in `config` file to match your needs. These paths are softwares are used in FBA analyses.
+- Update fields in `config` file to match your needs. These paths and softwares are used in FBA analyses.
 - **UPDATE THE VARIABLE `config` IN EACH SBATCH SCRIPT TO THE PATH OF YOUR CONFIG FILE**
 - Read the note above about running FBA jobs scripts, and then run bash scripts 1-5.
 
 ## 4) Second-level manual QC
 - Run Jupyter notebook 4.
 
-## Step 4: Perform tract profile analysis (supplement)
-- You should see a file called `subjects.txt` in your TractSeg derivatives folder. Open it and update the `/PATH/TO/BIDS` portion of lines 1 and 3 (beginning with `tracometry_path` and `plot_3d`) to direct to your BIDS directory. Feel free to rename this file something more informative (e.g. `towre_group_difference.txt`)
-- Based on the analysis you want to run (correlation vs group difference) and your desired nuisance regressors, update line 28 in accordance with the directions written in the body of `subjects.txt`.
-- Copy the tractometry model input (output of `5_tract_profiles.ipynb`) and paste it to `subjects.txt` (or whatever you named it) under line 28.
-- Navigate terminal to your TractSeg derivatives folder and run the model: `singularity exec -e -B /PATH/TO/BIDS /PATH/TO/tractseg.simg plot_tractometry_results -i /PATH/TO/subjects.txt -o /PATH/TO/output`
-- - If making a 3D Plot, make sure you include the options `--plot3D pval` and  `--tracking_format trk` to the command
+## 5) Finish FBA preparations
+- Run bash scripts 6-9. 8a and 8b can be run concurrently.
+- While the scripts are running, you can analyze phenotypic data and make the necessary files for running the ModelArray analyses in Jupyter noteboook (notebooks 5 and 6).
+
+## 6) Run ModelArray analyses
+
 
 ## Questions? Feel free to either open an issue in this repository or email Steven Meisler (smeisler@g.harvard.edu) with any problems, suggestions, or feedback!
 
