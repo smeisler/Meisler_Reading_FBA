@@ -41,7 +41,7 @@ If using this code, please also cite relevant papers to the software and methods
 
 ## 2) Run automated QC and first-level manual QC. Determine which subjects define population template
 - Before beginning, save your HBN phenotypic data as `HBN_query.csv` and place it in your BIDS code directory.
-- Run through Jupyter notebooks 1-3. Read the comments in the notebook for notes and directions.
+- Run through Jupyter notebook 1. Read the comments in the notebook for notes and directions.
 
 ## 3) Begin Fixel Based Analysis Pipeline (up until manual QC is required again)
 - Update fields in `config` file to match your needs. These paths and softwares are used in FBA analyses.
@@ -49,11 +49,11 @@ If using this code, please also cite relevant papers to the software and methods
 - Read the note above about running FBA jobs scripts, and then run bash scripts 1-5.
 
 ## 4) Second-level manual QC
-- Run Jupyter notebook 4.
+- Run Jupyter notebook 2.
 
 ## 5) Finish FBA preparations
 - Run bash scripts 6-9. 8a and 8b can be run concurrently.
-- While the scripts are running, you can analyze phenotypic data and make the necessary files for running the ModelArray analyses in Jupyter noteboook (notebooks 5 and 6).
+- While the scripts are running, you can analyze phenotypic data and make the necessary files for running the ModelArray analyses in Jupyter noteboook 3.
 
 ## 6) Run ModelArray analyses
 
