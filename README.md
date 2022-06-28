@@ -58,7 +58,7 @@ We ran NODDI and DKI reconstruction on these files with QSIPrep, and also used s
 
 ## 5) Finish FBA preparations
 - Run bash scripts 6-9. 8a and 8b can be run concurrently.
-- While the scripts are running, you can analyze phenotypic data and make the necessary files for running the ModelArray analyses in Jupyter noteboook 3.
+- While the scripts are running, you can make the necessary files for running the ModelArray analyses and analyze phenotypic data in Jupyter noteboooks 3 and 4.
 
 ## 6) Run ModelArray analyses
 - Using ConFixel, convert .mif to .h5 files (`bash convert_mif_to_h5.mif`)
