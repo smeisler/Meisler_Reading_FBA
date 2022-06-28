@@ -1,0 +1,30 @@
+{ "description": "Reconstruct DWI using DIPY and NODDI using AMICO",
+  "space": "T1w",
+  "name": "dki_noddi_recon",
+  "atlases": [ ],
+  "nodes": [
+    {
+      "name": "dki_recon",
+      "software": "Dipy",
+      "action": "DKI_reconstruction",
+      "input": "qsiprep",
+      "output_suffix": "DKI",
+      "parameters": {
+        "write_mif": false,
+        "write_fibgz": false
+      }
+    },
+    {
+      "name": "fit_noddi",
+      "action": "fit_noddi",
+      "software": "AMICO",
+      "input": "qsiprep",
+      "output_suffix": "NODDI",
+      "parameters": {
+        "isExvivo": false,
+        "dPar": 1.7E-3,
+        "dIso": 3.0E-3
+      }
+    }
+  ]
+}
