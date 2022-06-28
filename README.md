@@ -35,7 +35,7 @@ If using this code, please also cite relevant papers to the software and methods
 - Using the AWS command line, `aws s3 cp` or `aws s3 sync` the HBN-POD2 repository (`s3://fcp-indi/data/Projects/HBN/BIDS_curated/derivatives/qsiprep/`) do your `BIDSROOT/derivatives/qsiprep` folder.
 - Using the HBN Loris portal (https://data.healthybrainnetwork.org/main.php) make a phenotypic query with _at least_ the following fields: "Basic_Demos", "TOWRE", "EHQ", "WISC", "Barratt", and "Clinician Diagnoses"
 
-## 1) Preprocess DWI and T1 (qsiprep and smriprep)
+## 1) Run DWI reconstructino and FreeSurfer (qsiprep and smriprep)
 We ran NODDI and DKI reconstruction on these files with QSIPrep, and also used smriprep to run FreeSurfer - needed for intracranial volume estimation.
 - Download the `qsiprep` and `smriprep` folders to your BIDS code folder. In them, add your FreeSurfer license as `license.txt` (case-sensitive).
 - In the `submit_job_array.sh` scripts, udpate the variable `bids` in the beginning of the scripts to direct to your BIDS directory. Additionally, in the last line of the scripts, you can update the parameter after `%` to limit how many jobs can be active at a time. We set this to 100 as a default, but you can alter this or delete it to not set a limit.
@@ -47,7 +47,7 @@ We ran NODDI and DKI reconstruction on these files with QSIPrep, and also used s
 - Run through Jupyter notebook 1. Read the comments in the notebook for notes and directions.
 
 ## 3) Begin Fixel Based Analysis Pipeline (up until manual QC is required again)
-- Update fields in `config` file to match your needs. These paths and softwares are used in FBA analyses.
+- Update fields in `fba/config` file to match your needs. These paths and softwares are used in FBA analyses.
 - **UPDATE THE VARIABLE `config` IN EACH SBATCH SCRIPT TO THE PATH OF YOUR CONFIG FILE**
 - Read the note above about running FBA jobs scripts, and then run bash scripts 1-5.
 
