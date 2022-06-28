@@ -37,7 +37,7 @@ If using this code, please also cite relevant papers to the software and methods
 - Using the AWS command line, `aws s3 cp` or `aws s3 sync` the HBN-POD2 repository (`s3://fcp-indi/data/Projects/HBN/BIDS_curated/derivatives/qsiprep/`) do your `BIDSROOT/derivatives/qsiprep` folder.
 - Using the HBN Loris portal (https://data.healthybrainnetwork.org/main.php) make a phenotypic query with _at least_ the following fields: "Basic_Demos", "TOWRE", "EHQ", "WISC", "Barratt", and "Clinician Diagnoses"
 
-## 1) Run DWI reconstructino and FreeSurfer (qsiprep and smriprep)
+## 1) Run DWI reconstruction and FreeSurfer (qsiprep and smriprep)
 We ran NODDI and DKI reconstruction on these files with QSIPrep, and also used smriprep to run FreeSurfer - needed for intracranial volume estimation.
 - Download the `qsiprep` and `smriprep` folders to your BIDS code folder. In them, add your FreeSurfer license as `license.txt` (case-sensitive).
 - In the `submit_job_array.sh` scripts, udpate the variable `bids` in the beginning of the scripts to direct to your BIDS directory. Additionally, in the last line of the scripts, you can update the parameter after `%` to limit how many jobs can be active at a time. We set this to 100 as a default, but you can alter this or delete it to not set a limit.
