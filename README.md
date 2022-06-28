@@ -55,6 +55,7 @@ We ran NODDI and DKI reconstruction on these files with QSIPrep, and also used s
 
 ## 4) Second-level manual QC
 - Run Jupyter notebook 2.
+- Remove any poor quality subjects from the FBA derivatives directories
 
 ## 5) Finish FBA preparations
 - Run bash scripts 6-9. 8a and 8b can be run concurrently.
