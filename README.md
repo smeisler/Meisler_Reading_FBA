@@ -60,7 +60,10 @@ We ran NODDI and DKI reconstruction on these files with QSIPrep, and also used s
 - While the scripts are running, you can analyze phenotypic data and make the necessary files for running the ModelArray analyses in Jupyter noteboook 3.
 
 ## 6) Run ModelArray analyses
-
+- Using ConFixel, convert .mif to .h5 files (`bash convert_mif_to_h5.mif`)
+- Run the models in the `fba/models` folder
+- Convert the ModelArray outputs back to mif form with `python convert_h5_to_mif.py`
+- Explore the results in MRtrix's MRView
 
 ## Questions? Feel free to either open an issue in this repository or email Steven Meisler (smeisler@g.harvard.edu) with any problems, suggestions, or feedback!
 
