@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# DEFINE IMPORTANT PATHS
+base="/om4/group/gablab/data/hbn_bids" # bids root
+qsiprep_dir="$base/derivatives/qsiprep_fba_subs" # qsiprep POD2 derivatives of only the subjects included in the FBA)
+qsirecon_dir="$base/derivatives/qsirecon"
+outdir="$base/derivatives/fba/" # output directory
+scratch="/om2/scratch/Fri/$(whoami)/fba" # temporary work directory
+mkdir -p $scratch
+
+# DEFINE DWI PARAMETERS
+fodf_shells='2000' # Besides 0, all shells you want included for FBA separated by a comma (e.g. "1000,2000"). Recommended to use the single highest b-value shell available
+single_multi='single' # 'single' - use SS3T for single shell FOD fit, 'multi' - use MSMT for multishell FOD fit. This should correspond to what you choose for the "fodf_shells" variable.
+
+# LOAD SOFTWARES (either as modules, singularity containers, or additions to PATH)
+module add openmind/singularity/3.9.5
+mrtrix3t="singularity exec -e -B $base,$scratch /om2/user/smeisler/mrtrix_ss3t.img" #leave as empty string if mrtrix3t is installed locally and in your path
+mrtrix="singularity exec -e -B $base,$scratch /om2/user/smeisler/mrtrix_3.0.3.img" #leave as empty string if mrtrix is installed locally and in your path
+fsl="singularity exec -e -B $base,$scratch /om2/user/smeisler/fsl_new.img" #leave as empty string if fsl is installed locally and in your path
+tractseg="singularity exec -e -B $base,$scratch /om2/user/smeisler/tractseg_23.img" #leave as empty string if tractseg is installed locally and in your path
+Rscript="/om2/user/smeisler/anaconda3/envs/r-brain/bin/Rscript" # Path to Rscript command that has ModelArray installed (leave as empty string if it is on path by default)

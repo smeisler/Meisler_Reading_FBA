@@ -1,0 +1,109 @@
+version: 2
+jobs:
+
+  get_data:
+    docker:
+      - image: continuumio/miniconda3:4.9.2
+    steps:
+      - restore_cache:
+          keys:
+            - data-v1-{{ .Revision }}
+            - data-v1-
+      - run:
+          name: Install mrtrix3
+          command:
+      - run:
+          name: Download example group fixel data directory
+          command: |
+            mkdir -p /tmp/data
+            if [[ ! -d /tmp/data/fixeldata ]]; then
+              wget --retry-connrefused --waitretry=5 --read-timeout=20 --timeout=15 -t 0 -q \
+                -O fixeldata.tar.gz "https://upenn.box.com/shared/static/a1co6vdi8i4tqt12cjp96glrq32hg3kq.gz"
+              tar xvfz fixeldata.tar.gz -C /tmp/data/
+            else
+              echo "Fixel data was cached"
+            fi
+
+      - persist_to_workspace:
+          root: /tmp
+          paths:
+            - data
+
+      - save_cache:
+         key: data-v1-{{ epoch }}
+         paths:
+            - /tmp/data
+
+
+  FixelUpload:
+    machine:
+      image: continuumio/miniconda3:4.9.2
+    working_directory: /tmp/data
+    steps:
+      - attach_workspace:
+          at: /tmp
+      - restore_cache:
+          keys:
+            - docker-v1-{{ .Branch }}-{{ .Revision }}
+            - data-v1-{{ .Revision }}
+            - data-v1-
+      - run:
+          name: Load Docker image layer cache
+          no_output_timeout: 30m
+          command: |
+            docker info
+            set +o pipefail
+            if [ -f /tmp/cache/docker.tar.gz ]; then
+              sudo apt update && sudo apt -y install pigz
+              pigz -d --stdout /tmp/cache/docker.tar.gz | docker load
+              docker images
+            fi
+
+      - run:
+          name: Upload test data
+          no_output_timeout: 2h
+          command: |
+            cp /tmp/src/ConFixel/.circleci/test_cohort.csv /tmp/data/test_cohort.csv
+            sudo chmod a+r /tmp/data/test_cohort.csv
+            docker run --rm -it \
+              -v /tmp/data:/inputs \
+              -v /tmp:/tmp \
+              pennbbl/fixeldb:latest \
+              --relative-root /inputs \
+              --directions-file fixeldata/directions.mif \
+              --index-file fixeldata/index.mif \
+              --cohort-file test_cohort.csv \
+              --output-hdf5 fixels.h5
+
+      - store_artifacts:
+          path: /tmp/data/fixels.h5
+
+workflows:
+  version: 2
+  build_test_deploy:
+    jobs:
+      - build:
+          filters:
+            tags:
+              only: /.*/
+
+      - get_data:
+          filters:
+            branches:
+              ignore:
+                - /docs?\/.*/
+                - /tests?\/.*/
+            tags:
+              only: /.*/
+
+      - FixelUpload:
+          requires:
+            - get_data
+            - build
+          filters:
+            branches:
+              ignore:
+                - /docs?\/.*/
+                - /tests?\/.*/
+            tags:
+              only: /.*/
