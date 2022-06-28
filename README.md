@@ -26,7 +26,7 @@ If using this code, please also cite relevant papers to the software and methods
   - sMRIPrep 0.8.1 (`singularity build smriprep.simg docker://nipreps/smriprep:0.8.1`)
   - Singularity 3.9.5 was used in this study. The images above were used in this study, but **more recent stable versions of these software may introduce improvements that should be used in future research.**
 - SLURM job scheduler, used for parallelizing jobs. If you uses SGE/PBS to schedule jobs, the scripts can be adapted using tips from this webpage: https://www.msi.umn.edu/slurm/pbs-conversion
-- Python environment with Jupyter capabilities and the following dependencies: numpy, scipy, scikit-learn, pandas, os, glob, matplotlib, json, filecmp, nilearn, fslpy, pingouin, statsmodels, and seaborn
+- Python environment with Jupyter capabilities and the following dependencies: numpy, scipy, scikit-learn, pandas, os, glob, matplotlib, json, filecmp, nilearn, fslpy, pingouin, statsmodels, seaborn, and statannotations (https://github.com/trevismd/statannotations)
 - FreeSurfer license (https://surfer.nmr.mgh.harvard.edu/fswiki/License) - **ADD THIS FILE as "license.txt" in the "qsiprep" and "smriprep" folders**
 ### Additional requirements if downloading HBN data
 - Data Usage Agreement (if working with Healthy Brain Network data), used to access neuroimaging and phenotypic data
