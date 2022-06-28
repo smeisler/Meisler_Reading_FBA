@@ -1,4 +1,8 @@
 # Meisler_Reading_FBA
+
+To cite:
+---ADD CITATION HERE WHEN AVAILABLE---
+
 Code used in the Meisler and Gabrieli 202X paper on fixel based analyses relating to reading abilities. Please clone these folders to your BIDS code directory (you can delete the LICENSE and README files from there afterwards).
 
 For this study, we began with already preprocessed T1w and DWI data from the HBN-POD2 release (see https://www.biorxiv.org/content/10.1101/2022.02.24.481303v1.abstract). These data are hosted on AWS as `s3://fcp-indi/data/Projects/HBN/BIDS_curated/derivatives/qsiprep/`.
@@ -6,9 +10,6 @@ For this study, we began with already preprocessed T1w and DWI data from the HBN
 This repository includes the code used to further preprocess the neuroimaging data (QSIPrep and sMRIPrep), prepare for fixel-based analyses (FBA, primarily using MRtrix3), run the FBA (ModelArray), and run the statistics/make figures. Much of the processing code is agnostic to the data set. That is, it can be run on **any BIDS** compliant dataset with T1w and diffusion data. Other parts of code, such as quality control, statistics, and phenotypic comparisons, are tailored to work with a Healthy Brain Network (HBN) phenotypic query, but can be adapted to work with another dataset.
 
 **A NOTE ON RUNNING FBA SCRIPTS**: Due to the large size of the cohort, individual subject jobs (odd-numbered bash scripts) are parallelized for efficiency. To submit odd numbered jobs, navigate terminal to the `fba/bash_scripts` code folder, and run `./submit_job_array X` where "X" is the number of the bash script (e.g. 1,3,5,7,9). Even number scripts can be submitted by running `sbatch Y` where "Y" is the _full name_ of the scripts (e.g. "2_average_responses.sh"). The steps mostly mirror those described in MRtrix's FBA tutorial (https://mrtrix.readthedocs.io/en/latest/fixel_based_analysis/st_fibre_density_cross-section.html) and are also described in our paper.
-
-To cite:
----ADD CITATION HERE WHEN AVAILABLE---
 
 If using this code, please also cite relevant papers to the software and methods employed here. See our paper or the software-specific documentation (bottom of this README) for these references.
 
