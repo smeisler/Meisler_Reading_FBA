@@ -15,6 +15,7 @@ If using this code, please also cite relevant papers to the software and methods
 ## Requirements
 ### In general
 - BIDS-compliant dataset with _at least_ T1w and DWI images
+- Environment (Anaconda recommened) with ConFixel (https://github.com/PennLINC/ConFixel) and ModelArray (https://github.com/PennLINC/ModelArray) installed
 - Singularity / Docker with the following Docker images:
   - QSIPrep 0.15.3 (`singularity build qsiprep.simg docker://pennbbl/qsiprep:0.15.3`)
   - TractSeg 2.3 (`singularity build tractseg.simg docker://wasserth/tractseg_container:master`)
