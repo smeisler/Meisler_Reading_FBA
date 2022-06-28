@@ -30,9 +30,9 @@ ln -sf $bids_dir/dataset_description.json $scratch/${subject}_db/dataset_descrip
 ln -sf $bids_dir/$subject $scratch/${subject}_db/$subject
 
 # define the command
-cmd="singularity run -B ${scratch},${bids_dir},${output_dir} $IMG --participant_label ${subject:4} -w $scratch --recon-only --recon-spec --fs-license-file ${bids_dir}/code/qsiprep/license.txt --skip-bids-validation $scratch/${subject}_db/ ${output_dir} participant"
+cmd="singularity run -B ${scratch},${bids_dir},${output_dir} $IMG --participant_label ${subject:4} -w $scratch --recon-only --recon-input ${output_dir}/derivatives/qsiprep --recon-spec ${bids_dir}/code/qsiprep/dki_noddi_recon.json --fs-license-file ${bids_dir}/code/qsiprep/license.txt --skip-bids-validation $scratch/${subject}_db/ ${output_dir} participant"
 
 # run the command
 echo "Submitted job for: ${subject}"
-echo "$'Command :\n'${cmd}"
+echo $'Command :\n'${cmd}
 ${cmd}
