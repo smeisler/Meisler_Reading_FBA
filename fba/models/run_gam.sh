@@ -5,7 +5,7 @@
 #SBATCH -J ModelArray
 #SBATCH -p gablab
 
-config=/om4/group/gablab/data/hbn_bids/code/fba/config
+config=/PATH/TO/config
 source $config
 
 set -eu # Stop on errors
