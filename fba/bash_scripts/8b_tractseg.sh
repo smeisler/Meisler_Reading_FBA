@@ -7,7 +7,7 @@
 ########## Segment tracts on FOD template and make masks out of them ##########
 
 # Get variables from config
-config=/om4/group/gablab/data/hbn_bids/code/fba/config
+config=/PATH/TO/config
 source $config
 
 # Stop on error
