@@ -7,7 +7,7 @@
 ########## Run tractography on FOD template and smooth fixel-metrics based on fixel connectivity ##########
 
 # Get variables from config
-config=/om4/group/gablab/data/hbn_bids/code/fba/config
+config=/PATH/TO/config
 source $config
 
 # Stop on error
