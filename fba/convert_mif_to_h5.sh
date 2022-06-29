@@ -1,5 +1,5 @@
 #!/bin/bash
-config=/om4/group/gablab/data/hbn_bids/code/fba/config
+config=/PATH/TO/config
 source $config
 
 fn_py="$base/code/fba/ConFixel/confixel/fixels.py" # path to fixels.py from ConFixel
