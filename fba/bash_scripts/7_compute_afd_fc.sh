@@ -7,7 +7,7 @@
 ########## Compute Fiber Density (FD), Cross-Section (FC) and their product (FDC) ##########
 
 # Get variables from config
-config=/om4/group/gablab/data/hbn_bids/code/fba/config
+config=/PATH/TO/config
 source $config
 
 # Stop on error
