@@ -7,7 +7,6 @@ set -eu # Stop on errors
 
 ##### CHANGE THESE VARIABLES AS NEEDED ######
 IMG='' # put path to qsiprep docker image here
-module add openmind/singularity/3.9.5 # add singularity to path
 scratch='' # assign working directory
 #############################################
 
@@ -23,14 +22,15 @@ subject=${subjs[${SLURM_ARRAY_TASK_ID}]}
 output_dir=${bids_dir}/derivatives
 mkdir -p ${output_dir}
 
-# create single-subject bids directory in scratch space (speeds up smriprep initialization)
-# This is fine for HPCs, but will add a lot of temporary storage usage, so be careful if you are using this on a space-limited drive!
-mkdir -p ${scratch}/${subject}_db
+# create single-subject bids directory in scratch space (speeds up qsiprep initialization)
+mkdir -p ${scratch}/${subject}_db/derivatives/qsiprep
 ln -sf $bids_dir/dataset_description.json $scratch/${subject}_db/dataset_description.json 
 ln -sf $bids_dir/$subject $scratch/${subject}_db/$subject
+ln -sf $bids_dir/derivatives/qsiprep/$subject/ $scratch/${subject}_db/derivatives/qsiprep/
+
 
 # define the command
-cmd="singularity run -B ${scratch},${bids_dir},${output_dir} $IMG --participant_label ${subject:4} -w $scratch --recon-only --recon-input ${output_dir}/derivatives/qsiprep --recon-spec ${bids_dir}/code/qsiprep/dki_noddi_recon.json --fs-license-file ${bids_dir}/code/qsiprep/license.txt --skip-bids-validation $scratch/${subject}_db/ ${output_dir} participant"
+cmd="singularity run -B ${scratch},${bids_dir},${output_dir} $IMG --participant_label ${subject:4} -w $scratch --recon-only --recon-input $scratch/${subject}_db/derivatives/qsiprep/ --recon-spec ${bids_dir}/code/qsiprep/dki_noddi_recon.json --fs-license-file ${bids_dir}/code/qsiprep/license.txt --skip-bids-validation $scratch/${subject}_db/ ${output_dir} participant"
 
 # run the command
 echo "Submitted job for: ${subject}"
