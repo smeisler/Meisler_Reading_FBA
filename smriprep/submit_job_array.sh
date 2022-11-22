@@ -1,5 +1,5 @@
 #!/bin/bash
-subjs=$@
+subjs=($@) # You can run 'submit_job_array.sh sub-xx sub-xy' to only run specific subjects
 base='' # PUT YOUR BIDS DIRECTORY HERE
 
 # Get subject names from the directory
