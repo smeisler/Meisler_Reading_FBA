@@ -8,7 +8,6 @@ set -eu # Stop on errors
 
 ##### CHANGE THESE VARIABLES AS NEEDED ######
 IMG="" # path to smriprep container
-module add openmind/singularity/3.9.5 # add singularity to path
 scratch="" # path to working directory
 #############################################
 
@@ -27,11 +26,10 @@ output_dir=${bids_dir}/derivatives
 rm -f $output_dir/freesurfer/$subject/scripts/*Running*
 
 # create single-subject bids directory in scratch space (speeds up smriprep initialization)
-# This is fine for HPCs, but will add a lot of temporary storage usage, so be careful if you are using this on a space-limited drive!
-if [ ! -d $scratch/${subject}_db/$subject ]; then mkdir -p ${scratch}/${subject}_db/$subject/anat
-cp $bids_dir/dataset_description.json $scratch/${subject}_db/dataset_description.json 
-cp $bids_dir/$subject/ses*/anat/* $scratch/${subject}_db/$subject/anat
-fi;
+mkdir -p ${scratch}/${subject}_db/$subject/anat/
+mkdir -p ${scratch}/${subject}_db/derivatives/
+ln -sf $bids_dir/dataset_description.json $scratch/${subject}_db/dataset_description.json 
+ln -sf $bids_dir/$subject/ses*/anat/* $scratch/${subject}_db/$subject/anat/
 
 # Define the command
 cmd="singularity run -B ${scratch},${bids_dir} $IMG --participant_label ${subject:4} -w $scratch --fs-license-file ${bids_dir}/code/smriprep/license.txt $scratch/${subject}_db/ ${output_dir} participant"
