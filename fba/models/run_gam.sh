@@ -17,4 +17,4 @@ IMG=/PATH/TO/modelarray_0.1.2.img
 # Run Model
 echo $model
 
-singularity run -B $base,$model --cleanenv ${IMG} Rscript $model "$outdir"
+singularity exec -B $base,$model --cleanenv ${IMG} Rscript $model "$outdir"
