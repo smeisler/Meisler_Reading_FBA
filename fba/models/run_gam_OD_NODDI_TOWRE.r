@@ -8,12 +8,12 @@ knitr::opts_chunk$set(
 
 args = commandArgs(trailingOnly=TRUE)
 fba_dir = args[1] # path to FBA derivatives directory
-metric = 'OD_NODDI' # metric to analyze (e.g., log_fc, fc, or fdc)
+metric = 'OD_NODDI' # metric to analyze (e.g., log_fc, fd, or fdc)
 
 # Define analysis and file paths
 metric = c(metric) 
 h5_path <- paste(fba_dir, "template/modelarray_inputs/fixels_",metric,'.h5',sep="")
-#csv_path <- paste(fba_dir, "template/modelarray_inputs/cohort_",metric,'.csv',sep="")
+csv_path <- paste(fba_dir, "template/modelarray_inputs/cohort_",metric,'.csv',sep="")
 odelarray <- ModelArray(h5_path, scalar_types = metric)
 phenotypes <- read.csv(csv_path)
 
