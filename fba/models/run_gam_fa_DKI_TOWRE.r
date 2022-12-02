@@ -8,7 +8,7 @@ knitr::opts_chunk$set(
 
 args = commandArgs(trailingOnly=TRUE)
 fba_dir = args[1] # path to FBA derivatives directory
-metric = 'fa_DKI' # metric to analyze (e.g., log_fc, fc, or fdc)
+metric = 'fa_DKI' # metric to analyze (e.g., log_fc, fd, or fdc)
 
 # Define analysis and file paths
 metric = c(metric) 
