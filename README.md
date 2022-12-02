@@ -61,8 +61,8 @@ We ran NODDI and DKI/DTI reconstruction on these files with QSIPrep, and also us
 
 ## 5) Finish FBA preparations
 - Run bash scripts 6-9. 8a and 8b can be run concurrently.
+- bash script S1 warps the voxel scalar maps from DTI, DKI, and NODDI, which is used in the secondary analyses.
 - While the scripts are running, you can make the necessary files for running the ModelArray analyses and analyze phenotypic data in Jupyter noteboooks 3 and 4.
-- bash script S1 warps the voxel scalar maps from DTI, DKI, and NODDI, which is used in the supplemental analyses
 
 ## 6) Run ModelArray analyses
 - Using ConFixel, convert .mif to .h5 files (`bash convert_mif_to_h5.mif`)
