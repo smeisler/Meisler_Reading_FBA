@@ -3,7 +3,7 @@
 To cite:
 ---ADD CITATION HERE WHEN AVAILABLE---
 
-Code used in the Meisler and Gabrieli 202X paper on fixel based analyses relating to reading abilities. Please clone these folders to your BIDS code directory (you can delete the LICENSE and README files from there afterwards).
+Code used in the Meisler and Gabrieli 202X paper on fixel based analyses relating to reading abilities. Please clone these folders to your BIDS code directory (you can delete the LICENSE and README files from there afterwards). For model and tract segmentation outputs that can be viewed with MRview, please visit https://osf.io/3ady4/.
 
 For this study, we began with already preprocessed T1w and DWI data from the HBN-POD2 release (Richie-Halford et al., 2022; *Scientific Data* (https://www.nature.com/articles/s41597-022-01695-7)). These data are hosted on AWS as `s3://fcp-indi/data/Projects/HBN/BIDS_curated/derivatives/qsiprep/`.
 
@@ -66,8 +66,8 @@ We ran NODDI and DKI/DTI reconstruction on these files with QSIPrep, and also us
 
 ## 6) Run ModelArray analyses
 - Using ConFixel, convert .mif to .h5 files (`bash convert_mif_to_h5.mif`)
-- Run the models in the `fba/models` folder
-- Convert the ModelArray outputs back to mif form with `python convert_h5_to_mif.py`
+- Run the models in the `fba/models` folder with `submit_gams.sh`
+- Convert the ModelArray outputs back to mif form with `python convert_h5_to_mif.py /PATH/TO/BIDS/ROOT`
 - Explore the results in MRtrix's MRView
 
 ## Questions? Feel free to either open an issue in this repository or email Steven Meisler (smeisler@g.harvard.edu) with any problems, suggestions, or feedback!
