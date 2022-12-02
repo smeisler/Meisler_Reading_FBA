@@ -8,7 +8,7 @@ knitr::opts_chunk$set(
 
 args = commandArgs(trailingOnly=TRUE)
 fba_dir = args[1] # path to FBA derivatives directory
-metric = 'log_fc' # metric to analyze (log_fc, fc, or fdc)
+metric = 'log_fc' # metric to analyze (log_fc, fd, or fdc)
 
 # Define analysis and file paths
 metric = c(metric) 
@@ -24,25 +24,20 @@ logICV_demean = scale(phenotypes$logICV)
 phenotypes$logICV_DM <- logICV_demean
 TOWRE_demean = scale(phenotypes$TOWRE)
 phenotypes$TOWRE_DM <- TOWRE_demean
-MOTION_demean = scale(phenotypes$MOTION)
-phenotypes$MOTION_DM <- MOTION_demean
-N_CORRS_demean = scale(phenotypes$N_CORRS)
-phenotypes$N_CORRS_DM <- N_CORRS_demean
-gFD_demean = scale(phenotypes$gFD)
-phenotypes$gFD_DM <- gFD_demean
+N_CORR_demean = scale(phenotypes$N_CORR)
+phenotypes$N_CORR_DM <- N_CORR_demean
 
 # make sure categorical variables are factors
 phenotypes$GROUP_F <- factor(phenotypes$GROUP)
 phenotypes$SEX_F <- factor(phenotypes$SEX)
-phenotypes$HAND_F <- factor(phenotypes$HAND)
 phenotypes$SITE_F <- factor(phenotypes$SITE)
 
 # define and run the GAM
-formula <- log_fc ~ s(AGE_DM, k=4, fx=TRUE) + SEX_F + SITE_F + logICV_DM + N_CORRS_DM + GROUP_F
+formula <- log_fc ~ s(AGE_DM, k=4) + SEX_F + SITE_F + logICV_DM + N_CORR_DM + GROUP_F
 mygam <- ModelArray.gam(formula, data = modelarray, phenotypes = phenotypes, scalar = metric, element.subset = NULL,
                           correct.p.value.smoothTerms = c("fdr"),
                           correct.p.value.parametricTerms = c("fdr"),
-                          #changed.rsq.term.index = c(6),
+                          changed.rsq.term.index = c(6),
                           full.outputs = TRUE, 
                         n_cores = 16, pbar = TRUE, verbose = TRUE)
 
@@ -52,4 +47,3 @@ h5_output_path <- gsub("_inputs","_outputs",h5_path)
 writeResults(h5_output_path, df.output = mygam,  
              analysis_name="result_gam", 
              overwrite=TRUE)
-
