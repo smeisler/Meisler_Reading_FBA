@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# To run GAM models in array, run `bash /PATH/TO/submit_gams.sh`
+
 # Get current directory
 filepath=`realpath $0`
 cwd=`dirname $filepath`
