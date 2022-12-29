@@ -1,7 +1,7 @@
 # Meisler_Reading_FBA
 
 To cite:
-Steven Lee MeislerJohn Gabrieli (2022) Fiber-specific structural properties relate to reading skills in children and adolescents eLife 11:e82088.
+Steven Lee Meisler and John D.E. Gabrieli (2022). Fiber-specific structural properties relate to reading skills in children and adolescents. _eLife_ 11:e82088.
 [![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.18914.svg)](https://doi.org/10.7554/eLife.82088)
 
 Code used in the Meisler and Gabrieli 2022 paper on fixel based analyses relating to reading abilities. Please clone these folders to your BIDS code directory (you can delete the LICENSE and README files from there afterwards). For model and tract segmentation outputs that can be viewed with MRview, please visit https://osf.io/3ady4/.
